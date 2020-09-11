@@ -12,6 +12,10 @@
   
   <!-- Localization-only mode -->
   <arg name="localization"            default="false"/>
+   
+   <!-- ROS BAG -->
+   <node unless="$(arg localization)" pkg="rosbag" type="record" name="marsyard_data" output="screen" 
+         args="record -o marsyard_data /tf /zed2/left/camera_info /zed2/left/image_rect_color/compressed /zed2/right/camera_info /zed2/right/image_rect_color/compressed /zed2/imu/data /zed2/odom /battery"/>
   
   <!-- Corresponding config files -->
   <arg name="rtabmapviz_cfg"          default="$(find rtabmap_ros)/launch/config/rgbd_gui.ini" />
